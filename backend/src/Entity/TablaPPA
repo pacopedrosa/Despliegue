@@ -1,0 +1,31 @@
+<?php
+namespace App\Entity;
+use Doctrine\ORM\Mapping as ORM;
+#[ORM\Entity]
+#[ORM\Table(name: "TablaPPA")]
+class TablaPPA
+{
+ #[ORM\Id]
+ #[ORM\GeneratedValue]
+
+ #[ORM\Column(type: "integer")]
+ private int $id;
+ #[ORM\Column(type: "string", length: 255)]
+ private string $frasePPA;
+ public function getId(): int
+ {
+ return $this->id;
+ }
+ public function getFrasePPA(): string
+
+ {
+ return $this->frasePPA;
+ }
+ public function setFrasePPA(string $frasePPA): self
+
+ {
+ $this->frasePPA = $frasePPA;
+ return $this;
+ }
+
+}
