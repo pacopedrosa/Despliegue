@@ -63,7 +63,7 @@ services:
       context: ./web
       dockerfile: DockerfileWeb
     ports:
-      - "80:80"
+      - "89:80"
       - "443:443"
     volumes:
       - ./web/certs:/etc/nginx/certs
