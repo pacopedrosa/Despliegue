@@ -35,13 +35,10 @@ services:
 
   database:
     image: mysql:8.0
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: PPA_BD
-      MYSQL_USER: alumnoDAW
-      MYSQL_PASSWORD: passPPA
+    # ports:
+      # - "3306:3306"
+    env_file:
+      - .env
     volumes:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - database_data:/var/lib/mysql
@@ -54,8 +51,8 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: database
-      PMA_USER: alumnoDAW
-      PMA_PASSWORD: passPPA
+    env_file:
+      - .env
     depends_on:
       - database
     networks:
@@ -67,6 +64,9 @@ services:
       dockerfile: DockerfileWeb
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      - ./web/certs:/etc/nginx/certs
     depends_on:
       - frontend
       - backend

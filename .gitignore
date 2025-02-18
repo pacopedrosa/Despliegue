@@ -1,0 +1,14 @@
+# Variables de entorno
+.env
+.env.local
+.env.*
+!.env.example
+
+# Certificados SSL
+/web/certs/*
+!web/certs/.gitignore
+
+# Directorios y archivos generados
+/vendor/
+/node_modules/
+.DS_Store
